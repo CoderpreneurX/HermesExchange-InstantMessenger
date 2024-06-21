@@ -10,6 +10,7 @@ class Message(models.Model):
         ('FWRD', 'forwarded'),
     ]
     user = models.ForeignKey(UserModel, on_delete=models.CASCADE, related_name='messages')
+    room_code = models.CharField(max_length=50)
     content = models.TextField(max_length=1000)
     message_type = models.CharField(max_length=4, choices=message_types, default=message_types[0][1])
     original_message = models.ForeignKey('self', on_delete=models.CASCADE, related_name='type_of_message', null=True, blank=True)
